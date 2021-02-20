@@ -1,3 +1,6 @@
 com.apple.recovery.boot/
 com.apple.recovery.boot/BaseSystem.dmg
 com.apple.recovery.boot/BaseSystem.chunklist
+.Spotlight-V100/
+.Trashes/
+.fseventsd/
