@@ -1,17 +1,12 @@
 # OpenCore EFI - HP Probook 640 G1
 ![opencore](https://img.shields.io/badge/OpenCore-0.6.6-brightgreen)
-This repo contains OpenCore EFI files for HP Probook 640 G1. Supports Catalina and BigSur.
+
+This repo contains OpenCore EFI files for HP Probook 640 G1. Supports macOS Catalina (Read important notes first) and BigSur.
 
 ![macOS Big Sur Dark](/images/bigsurdark.png)
 
-## Table of Content
-* [System Specs](#SystemSpecs)
-* [Whats Working / Not Working](#working/notworking)
-* [BIOS Settings](#setup)
-* [BIOS Settings](#setup)
-
 ## Laptop Specs
-| Model  | HP Probook 640 G3 |
+| Model  | HP Probook 640 G1 |
 | ------------- | ------------- |
 | Processor  | Intel(R) Core(TM) i5-4310M @ 2.70GHz (Haswell)  |
 | Memory | 8GB DDR 3L PC3L-12800 (1600 MHz)  |
@@ -31,11 +26,12 @@ This repo contains OpenCore EFI files for HP Probook 640 G1. Supports Catalina a
 ## Disclaimer
 * I am not responsible for any damage caused to your components, data loss, or anything else that may happen throughout this process.
 * No selling of EFI folder (config) that's readily available for free.
-* Due to the limitation of the HP Bios, it does not support booting directly from the M.2 SSD. 
-If you intend to use M.2 drive for macOS, you HAVE to have at least one more SATA disk for EFI booting. This drive is where we will store the EFI later. 
-USB drive can also be used for booting, although its not recommended.
-
 * Discrette Graphics will be disabled, since it is not supported under macOS Big Sur.
+
+## Important Notes
+* Due to the limitation and quirkness of the HP bios installed on this laptop, if you only have one M.2 SSD installed, you will need to install additional SATA HDD for booting. Look at FAQ for more information.
+* Airportitlwm.kext requires specific macOS version to function. Include in this repo is for BigSur. For Catalina use, download the kext [here](https://github.com/OpenIntelWireless/itlwm/releases) specific for Catalina and put it in the kext folder replacing the other one.
+
 
 ## Whats working / not working 
 Working
@@ -49,24 +45,29 @@ Working
 * WebCam
 * Keyboard / Trackpad
 * USB Ports
+* iCloud
 
 Not Working
 * Airdrop , Handoff
 * iMessage , Facetime
+* Discrette Graphics (not supported under macOS)
 
 Not Tested
 * SD Card Reader
 * Sleep
+* Battery reader (my battery not working)
 
 ## Bugs
-* Wifi is very slow, due to itlwm.kext [Read more](https://openintelwireless.github.io/itlwm/FAQ.html#usage) 
-* You tell me
+* Wifi is stable but very slow, due to [Airportitlwm.kext/itlwm.kext](https://openintelwireless.github.io/itlwm/FAQ.html#usage) 
+* [You tell me](https://github.com/ImanRizal99/OpenCore-HpProbook640G1/issues)
 
 ## Prerequisites
 * Read here
 https://dortania.github.io/OpenCore-Install-Guide/prerequisites.html#prerequisites
 
 * It's strongly recommended to use Ethernet for initial installation.
+
+* Update your BIOS first to the latest version.
 
 ## BIOS Settings
 * Boot Options
@@ -112,6 +113,14 @@ https://dortania.github.io/OpenCore-Install-Guide/prerequisites.html#prerequisit
 
 
 ## FAQ
+* Why this laptop won't boot from M.2 SSD?
+  * Due to the limitation of the HP Bios on this laptop, it does not support booting directly from the M.2 SSD (i don't know why). 
+If you intend to use M.2 drive for macOS, you HAVE to have at least one SATA disk for EFI booting. This drive is where we will store the EFI later and boot into. 
+USB drive can also be used for booting, although its not recommended.
+ 
+* I'm using a different type of NVMe m.2 ssd, and as soon as I installed macOS on it, it kernel panic.
+   * In that case, please download NVme.kext and put it inside the EFI/OC/Kext folder, then do a clean snapshot or manually update the config.plist
+
 * Can i sell this EFI?
    * NO
 
