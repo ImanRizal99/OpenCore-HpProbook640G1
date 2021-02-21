@@ -1,9 +1,9 @@
 # OpenCore EFI - HP Probook 640 G1
 ![opencore](https://img.shields.io/badge/OpenCore-0.6.6-brightgreen)
 
-This repo contains OpenCore EFI files for HP Probook 640 G1. Supports macOS Catalina (Read important notes first) and BigSur.
+This repo contains OpenCore EFI files for HP Probook 640 G1. Supports macOS Catalina (read important notes first) and BigSur.
 
-![macOS Big Sur Dark](/images/bigsurdark.png)
+![macOS Big Sur Dark](/images/bigsurdark.jpeg)
 
 ## Laptop Specs
 | Model  | HP Probook 640 G1 |
@@ -31,6 +31,7 @@ This repo contains OpenCore EFI files for HP Probook 640 G1. Supports macOS Cata
 ## Important Notes
 * Due to the limitation and quirkness of the HP bios installed on this laptop, if you only have one M.2 SSD installed, you will need to install additional SATA HDD for booting. Look at FAQ for more information.
 * Airportitlwm.kext requires specific macOS version to function. Include in this repo is for BigSur. For Catalina use, download the kext [here](https://github.com/OpenIntelWireless/itlwm/releases) specific for Catalina and put it in the kext folder replacing the other one.
+* You have to generate your own SMBIOS/SerialNumber, SMBIOS/BoardSerialNumber and SMBIOS/SmUUID.
 
 
 ## Whats working / not working 
